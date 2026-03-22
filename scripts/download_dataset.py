@@ -1,6 +1,7 @@
 import os
 import zipfile
 import gdown
+import shutil
 
 FILE_ID = "1No8kSNf_-JYXHtKGCH1anFi191HPZtrA"
 
@@ -31,6 +32,14 @@ def main():
     extract_zip(ZIP_PATH, DATA_DIR)
 
     os.remove(ZIP_PATH)
+    print("Dataset ready in:", EXTRACT_DIR)
+
+
+    macosx_path = os.path.join(DATA_DIR, '__MACOSX')
+    if os.path.exists(macosx_path):
+        shutil.rmtree(macosx_path)
+        print("Removed __MACOSX folder")
+    
     print("Dataset ready in:", EXTRACT_DIR)
 
 if __name__ == "__main__":
